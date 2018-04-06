@@ -1,12 +1,15 @@
 ---
-title: "Untitled"
-author: "Jacob L."
-date: "April 6, 2018"
+title: 'Summary of Space Accessiblity'
+author: 'R Group'
+date: '`r format(Sys.Date(), format="%B %d, %Y")`'
 output: html_document
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(echo = FALSE)
+knitr::opts_chunk$set(message = FALSE)
+knitr::opts_chunk$set(warning = TRUE)
+knitr::opts_chunk$set(results = 'asis')
 
 library('readr')
 library('dplyr')
@@ -16,6 +19,16 @@ library('dplyr')
 dataset <- readr::read_csv("building_inter_4-2-18_FIXED_FIRST_STRING.csv")
 ```
 
+## Summary
+
+We have compiled data on `r dataset %>% nrow()` buildings in this document. Below, you will find information on each building individually.
+
+```{r how many inacessible spaces are there}
+inaccessible_spaces <- dataset %>% filter(`Inaccessible spaces` == 'yes')
+```
+
+Overall, `r inaccessible_spaces %>% nrow()` (that is, `r ((inaccessible_spaces %>% nrow()) / (dataset %>% nrow()) * 100) %>% round(2)`%) of the `r dataset %>% nrow()` buildings in the dataset contain inaccessible spaces.
+
 ```{r loop through buildings}
 say <- function(..., space_separator = '\n\n') {
   cat(space_separator, ..., sep = '', collapse = '')
@@ -24,8 +37,8 @@ say <- function(..., space_separator = '\n\n') {
 for (row_number in 1:nrow(dataset)) {
   row <- dataset %>% slice(row_number)
   
-  say('# Building Name: ', row %>% pull(`Building name`))
-  say('## Building Information')
+  say('## Building Name: ', row %>% pull(`Building name`))
+  say('### Building Information')
   
   # say(space_separator, '- Building location: ')
   
