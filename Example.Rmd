@@ -5,7 +5,15 @@ date: '`r format(Sys.Date(), format="%B %d, %Y")`'
 output: 
   html_document:
     keep_md: true
+    self_contained: false
 ---
+
+# TODO
+
+- Document language
+- Only retaining the raw HTML for the body section of the document
+  - Using WordPress API to update a post?
+    - E.g., `http://web.sas.upenn.edu/access-map/wp-json/wp/v2/pages/` works for *reading* pages Not sure about updating pages yet, though a `PUT` command should work for it.
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
@@ -13,8 +21,10 @@ knitr::opts_chunk$set(message = FALSE)
 knitr::opts_chunk$set(warning = TRUE)
 knitr::opts_chunk$set(results = 'asis')
 
-library('readr')
 library('dplyr')
+library('httr')
+library('jsonlite')
+library('readr')
 ```
 
 ```{r load data}
@@ -32,6 +42,8 @@ inaccessible_spaces <- dataset %>% filter(`Inaccessible spaces` == 'yes')
 Overall, `r inaccessible_spaces %>% nrow()` (that is, `r ((inaccessible_spaces %>% nrow()) / (dataset %>% nrow()) * 100) %>% round(2)`%) of the `r dataset %>% nrow()` buildings in the dataset contain inaccessible spaces.
 
 ```{r loop through buildings}
+base_attachment_url <- 'https://services3.arcgis.com/9nfxWATFamVUTTGb/arcgis/rest/services/service_12179aa8762647dba17ff539184807a7/FeatureServer/0/queryAttachments'
+
 say <- function(..., space_separator = '\n\n') {
   cat(space_separator, ..., sep = '', collapse = '')
 }
@@ -42,9 +54,85 @@ for (row_number in 1:nrow(dataset)) {
   say('## Building Name: ', row %>% pull(`Building name`))
   say('### Building Information')
   
-  # say(space_separator, '- Building location: ')
+  say('- Building location (GPS coordinates): ', row %>% pull(x), ", ", row %>% pull(y))
   
-}
+  say(
+    '- Braille/tactile signage: ',
+    if(
+      !is.na(row %>% pull(`Braille/tactile signage?`)) &
+      row %>% pull(`Braille/tactile signage?`) == 'yes'
+    ) {
+      paste0('There *is* Braille/tactile signage. ', row %>% pull(`Braille Description`))
+    } else {
+      paste0('There is *not* Braille/tactile signage in this building.')
+    }
+  )
+  # TODO:
+    # Inaccessible spaces: ${inaccess}
+    # If yes, describe these: ${inaccess_notes}
+    # How are the hallways lit? ${light_type}
+    # Describe the lighting: ${light_note}
+    # Chemicals and allergens? ${chemical}
+  
+  say('### Building Features')
+  
+  number_of_floors <- row %>% pull(`Number of floors`)
+  if(!is.na(number_of_floors)) {
+    say('- There are ', number_of_floors, ' floors in the building.')
+  }
+  
+  # TODO:
+    # ${stairwells} stairwells
+    # ${elevators} elevators
+    # ${acc_bath} accessible bathrooms
+    # ${gn_bath} gender-neutral bathrooms
+    # ${gn_acc_bath} accessible gender-neutral bathrooms
+    # ${total_bath} total bathrooms
+    # Are there any lactation spaces? ${lactation} 
+    # Are there prayer or meditation spaces? ${prayer}
+  
+  say('### Additional information')
+  
+  say(row %>% pull(`Comments and additional information`))
+  
+  attachment_json_for_building <- GET(
+    base_attachment_url,
+    query = list(
+      globalIds = row %>% pull(`GlobalID`),
+      f = 'pjson'
+    )
+  )
+  
+  parsed_attachment_json <- fromJSON(content(attachment_json_for_building))
+  
+  if (!is.null(parsed_attachment_json$attachmentGroups$attachmentInfos[[1]])) {
+    for (attachment_row_number in 1:nrow(parsed_attachment_json$attachmentGroups$attachmentInfos[[1]])) {
+      attachment_row <- parsed_attachment_json$attachmentGroups$attachmentInfos[[1]] %>% slice(attachment_row_number)
+      if (attachment_row$contentType %>% startsWith('image')) {
+        say('![Image of building](', 'https://services3.arcgis.com/9nfxWATFamVUTTGb/ArcGIS/rest/services/service_12179aa8762647dba17ff539184807a7/FeatureServer/0/15/attachments/', attachment_row$id, ')')
+      } else {
+        say('[Link to attachment](', 'https://services3.arcgis.com/9nfxWATFamVUTTGb/ArcGIS/rest/services/service_12179aa8762647dba17ff539184807a7/FeatureServer/0/15/attachments/', attachment_row$id, ')')
+      }
+    }
+  }
+  
+}  # End of for loop
 ```
 
+```{r notes about the ArcGIS API}
+# Audio notes and other attachments:
+# Works for getting attachment json for a given Global ID:
+# https://services3.arcgis.com/9nfxWATFamVUTTGb/arcgis/rest/services/service_12179aa8762647dba17ff539184807a7/FeatureServer/0/queryAttachments?objectIds=&globalIds=be47a8fd-a98c-4088-9850-b9fb38549538&definitionExpression=&attachmentTypes=&size=&keywords=&resultOffset=&resultRecordCount=&f=pjson
 
+# An actual image location is of this format:
+# https://services3.arcgis.com/9nfxWATFamVUTTGb/ArcGIS/rest/services/service_12179aa8762647dba17ff539184807a7/FeatureServer/0/15/attachments/7
+
+# Thus, in the json above, for each attachment, you'd get attachmentGroups -> attachmentInfos -> id. That ID is the end of the image URL above.
+# And attachmentGroups -> attachmentInfos -> contentType says, e.g., 'image/jpeg' (vs. audio of some sort).
+```
+
+```{r get attachments for an object}
+
+```
+
+![This is alt text for an image](https://services3.arcgis.com/9nfxWATFamVUTTGb/ArcGIS/rest/services/service_12179aa8762647dba17ff539184807a7/FeatureServer/0/15/attachments/7)
