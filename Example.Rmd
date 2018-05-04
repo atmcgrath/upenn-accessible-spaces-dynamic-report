@@ -6,14 +6,24 @@ output:
   html_document:
     keep_md: true
     self_contained: false
+params: 
+  output_dir: 'output'
 ---
 
 # TODO
 
-- Document language
+- Finish writing the document
 - Only retaining the raw HTML for the body section of the document
-  - Using WordPress API to update a post?
-    - E.g., `http://web.sas.upenn.edu/access-map/wp-json/wp/v2/pages/` works for *reading* pages Not sure about updating pages yet, though a `PUT` command should work for it.
+
+## Stretch goals
+
+- Document language
+- API Access to ArcGIS dataset
+
+### Secondary stretch goals
+
+- Using WordPress API to update a post?
+  - E.g., `http://web.sas.upenn.edu/access-map/wp-json/wp/v2/pages/` works for *reading* pages Not sure about updating pages yet, though a `PUT` command should work for it.
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
@@ -31,6 +41,10 @@ library('readr')
 dataset <- readr::read_csv("building_inter_4-2-18_FIXED_FIRST_STRING.csv")
 ```
 
+```{r include=TRUE}
+cat("Test")
+```
+
 ## Summary
 
 We have compiled data on `r dataset %>% nrow()` buildings in this document. Below, you will find information on each building individually.
@@ -42,7 +56,7 @@ inaccessible_spaces <- dataset %>% filter(`Inaccessible spaces` == 'yes')
 Overall, `r inaccessible_spaces %>% nrow()` (that is, `r ((inaccessible_spaces %>% nrow()) / (dataset %>% nrow()) * 100) %>% round(2)`%) of the `r dataset %>% nrow()` buildings in the dataset contain inaccessible spaces.
 
 ```{r loop through buildings}
-base_attachment_url <- 'https://services3.arcgis.com/9nfxWATFamVUTTGb/arcgis/rest/services/service_12179aa8762647dba17ff539184807a7/FeatureServer/0/'
+# base_attachment_url <- 'https://services3.arcgis.com/9nfxWATFamVUTTGb/arcgis/rest/services/service_12179aa8762647dba17ff539184807a7/FeatureServer/0/'
 
 say <- function(..., space_separator = '\n\n') {
   cat(space_separator, ..., sep = '', collapse = '')
@@ -95,39 +109,39 @@ for (row_number in 1:nrow(dataset)) {
   
   say(row %>% pull(`Comments and additional information`))
   
-  attachment_json_for_building <- GET(
-    paste0(
-      base_attachment_url,
-      row %>% pull(`ObjectID`),
-      "/attachments"),
-    query = list(
-      # globalIds = row %>% pull(`GlobalID`),
-      f = 'pjson'
-    )
-  )
+  # attachment_json_for_building <- GET(
+  #   paste0(
+  #     base_attachment_url,
+  #     row %>% pull(`ObjectID`),
+  #     "/attachments"),
+  #   query = list(
+  #     # globalIds = row %>% pull(`GlobalID`),
+  #     f = 'pjson'
+  #   )
+  # )
   
-  parsed_attachment_json <- fromJSON(content(attachment_json_for_building))
-  
-  if (
-    (
-      (
-        is.null(parsed_attachment_json$error$code) ||
-        parsed_attachment_json$error$code != 400) &
-      !(
-        is.null(parsed_attachment_json$attachmentInfos) ||
-        length(parsed_attachment_json$attachmentInfos) == 0
-      )
-    )
-  ) {  # If there *are* attachments...
-    for (attachment_row_number in 1:nrow(parsed_attachment_json$attachmentInfos)) {
-      attachment_row <- parsed_attachment_json$attachmentInfos %>% slice(attachment_row_number)
-      if (attachment_row$contentType %>% startsWith('image')) {
-        say('![Image of building](', 'https://services3.arcgis.com/9nfxWATFamVUTTGb/ArcGIS/rest/services/service_12179aa8762647dba17ff539184807a7/FeatureServer/0/15/attachments/', attachment_row$id, ')')
-      } else {
-        say('[Link to attachment](', 'https://services3.arcgis.com/9nfxWATFamVUTTGb/ArcGIS/rest/services/service_12179aa8762647dba17ff539184807a7/FeatureServer/0/15/attachments/', attachment_row$id, ')')
-      }
-    }
-  }
+  # parsed_attachment_json <- fromJSON(content(attachment_json_for_building))
+  # 
+  # if (
+  #   (
+  #     (
+  #       is.null(parsed_attachment_json$error$code) ||
+  #       parsed_attachment_json$error$code != 400) &
+  #     !(
+  #       is.null(parsed_attachment_json$attachmentInfos) ||
+  #       length(parsed_attachment_json$attachmentInfos) == 0
+  #     )
+  #   )
+  # ) {  # If there *are* attachments...
+  #   for (attachment_row_number in 1:nrow(parsed_attachment_json$attachmentInfos)) {
+  #     attachment_row <- parsed_attachment_json$attachmentInfos %>% slice(attachment_row_number)
+  #     if (attachment_row$contentType %>% startsWith('image')) {
+  #       say('![Image of building](', 'https://services3.arcgis.com/9nfxWATFamVUTTGb/ArcGIS/rest/services/service_12179aa8762647dba17ff539184807a7/FeatureServer/0/15/attachments/', attachment_row$id, ')')
+  #     } else {
+  #       say('[Link to attachment](', 'https://services3.arcgis.com/9nfxWATFamVUTTGb/ArcGIS/rest/services/service_12179aa8762647dba17ff539184807a7/FeatureServer/0/15/attachments/', attachment_row$id, ')')
+  #     }
+  #   }
+  # }
   
 }  # End of for loop
 ```
