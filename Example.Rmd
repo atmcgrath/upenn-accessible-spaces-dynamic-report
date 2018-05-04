@@ -2,6 +2,7 @@
 title: 'Summary of Space Accessiblity'
 author: 'R Group'
 date: '`r format(Sys.Date(), format="%B %d, %Y")`'
+lang: 'en'
 output: 
   html_document:
     keep_md: true
@@ -9,6 +10,10 @@ output:
 params: 
   output_dir: 'output'
 ---
+
+<!-- This can be viewed, e.g., at 
+https://rawgit.com/publicus/upenn-accessible-spaces-dynamic-report/master/Example.html
+-->
 
 # TODO
 
@@ -56,7 +61,7 @@ inaccessible_spaces <- dataset %>% filter(`Inaccessible spaces` == 'yes')
 Overall, `r inaccessible_spaces %>% nrow()` (that is, `r ((inaccessible_spaces %>% nrow()) / (dataset %>% nrow()) * 100) %>% round(2)`%) of the `r dataset %>% nrow()` buildings in the dataset contain inaccessible spaces.
 
 ```{r loop through buildings}
-# base_attachment_url <- 'https://services3.arcgis.com/9nfxWATFamVUTTGb/arcgis/rest/services/service_12179aa8762647dba17ff539184807a7/FeatureServer/0/'
+base_attachment_url <- 'https://services3.arcgis.com/9nfxWATFamVUTTGb/arcgis/rest/services/service_12179aa8762647dba17ff539184807a7/FeatureServer/0/'
 
 say <- function(..., space_separator = '\n\n') {
   cat(space_separator, ..., sep = '', collapse = '')

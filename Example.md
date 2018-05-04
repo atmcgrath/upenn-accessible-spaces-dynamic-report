@@ -2,6 +2,7 @@
 title: 'Summary of Space Accessiblity'
 author: 'R Group'
 date: 'May 04, 2018'
+lang: 'en'
 output: 
   html_document:
     keep_md: true
@@ -9,6 +10,10 @@ output:
 params: 
   output_dir: 'output'
 ---
+
+<!-- This can be viewed, e.g., at 
+https://rawgit.com/publicus/upenn-accessible-spaces-dynamic-report/master/Example.html
+-->
 
 # TODO
 
