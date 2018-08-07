@@ -1,7 +1,7 @@
 ---
 title: 'Summary of Space Accessiblity'
 author: 'R Group'
-date: 'May 04, 2018'
+date: 'August 07, 2018'
 lang: 'en'
 output: 
   html_document:
@@ -22,7 +22,6 @@ https://rawgit.com/publicus/upenn-accessible-spaces-dynamic-report/master/Exampl
 
 ## Stretch goals
 
-- Document language
 - API Access to ArcGIS dataset
 
 ### Secondary stretch goals
@@ -30,6 +29,12 @@ https://rawgit.com/publicus/upenn-accessible-spaces-dynamic-report/master/Exampl
 - Using WordPress API to update a post?
   - E.g., `http://web.sas.upenn.edu/access-map/wp-json/wp/v2/pages/` works for *reading* pages Not sure about updating pages yet, though a `PUT` command should work for it.
 
+
+
+
+```
+## 4
+```
 
 
 
@@ -51,7 +56,7 @@ Overall, 11 (that is, 73.33%) of the 15 buildings in the dataset contain inacces
 
 - Building location (GPS coordinates): -75.19384, 39.95093
 
-- Braille/tactile signage: There *is* Braille/tactile signage. Braille for classroom signs. Braille signs are sometimes too high to comfortably reach in a wheelchair.
+- Braille/tactile signage: There *is* Braille/tactile signage: Braille for classroom signs. Braille signs are sometimes too high to comfortably reach in a wheelchair.
 
 ### Building Features
 
@@ -67,7 +72,7 @@ Accessible water fountain on third floor, second floor, first floor. Trash can b
 
 - Building location (GPS coordinates): -75.20313, 39.95276
 
-- Braille/tactile signage: There *is* Braille/tactile signage. Braille signs outside of every classroom or lecture hall
+- Braille/tactile signage: There *is* Braille/tactile signage: Braille signs outside of every classroom or lecture hall
 
 ### Building Features
 
@@ -83,7 +88,7 @@ NA
 
 - Building location (GPS coordinates): -75.19713, 39.95274
 
-- Braille/tactile signage: There is *not* Braille/tactile signage in this building.
+- Braille/tactile signage: (Unknown)
 
 ### Building Features
 
@@ -99,7 +104,7 @@ Accessible restroom only accessible by pin code that only building administrator
 
 - Building location (GPS coordinates): -75.18979, 39.95199
 
-- Braille/tactile signage: There *is* Braille/tactile signage. Some of the classrooms have Braille signage most do not
+- Braille/tactile signage: There *is* Braille/tactile signage: Some of the classrooms have Braille signage most do not
 
 ### Building Features
 
@@ -115,7 +120,7 @@ NA
 
 - Building location (GPS coordinates): -75.19472, 39.95139
 
-- Braille/tactile signage: There *is* Braille/tactile signage. Signage available but our of reach for a wheelchair user
+- Braille/tactile signage: There *is* Braille/tactile signage: Signage available but our of reach for a wheelchair user
 
 ### Building Features
 
@@ -147,7 +152,7 @@ NA
 
 - Building location (GPS coordinates): -75.19118, 39.94914
 
-- Braille/tactile signage: There is *not* Braille/tactile signage in this building.
+- Braille/tactile signage: (Unknown)
 
 ### Building Features
 
@@ -163,7 +168,7 @@ There is a ramp on the west side of the building to the Kamin entrance.  There a
 
 - Building location (GPS coordinates): -75.19271, 39.95162
 
-- Braille/tactile signage: There *is* Braille/tactile signage. Elevator
+- Braille/tactile signage: There *is* Braille/tactile signage: Elevator
 
 ### Building Features
 
@@ -179,7 +184,7 @@ Gendered bathrooms on LLR, accessible but automatic door doesn't work; Stacks na
 
 - Building location (GPS coordinates): -75.19818, 39.95319
 
-- Braille/tactile signage: There is *not* Braille/tactile signage in this building.
+- Braille/tactile signage: (Unknown)
 
 ### Building Features
 
@@ -195,7 +200,7 @@ Lactation space on ground floor. Accessible, gender-neutral bathroom in basement
 
 - Building location (GPS coordinates): -75.1919, 39.95211
 
-- Braille/tactile signage: There *is* Braille/tactile signage. Elevators stairs and rooms have Braille signage.
+- Braille/tactile signage: There *is* Braille/tactile signage: Elevators stairs and rooms have Braille signage.
 
 ### Building Features
 
@@ -211,7 +216,7 @@ No obviously inaccessible spaces but lots of doors particularly on floors 2, 3 a
 
 - Building location (GPS coordinates): -75.19648, 39.953
 
-- Braille/tactile signage: There *is* Braille/tactile signage. The bathrooms have Braille signs however they are at standing eye level. Other doors do not seem to have
+- Braille/tactile signage: There *is* Braille/tactile signage: The bathrooms have Braille signs however they are at standing eye level. Other doors do not seem to have
 
 ### Building Features
 
@@ -227,7 +232,7 @@ All floors of building can be accessed by elevator, and on nights of their shows
 
 - Building location (GPS coordinates): -75.19524, 39.95222
 
-- Braille/tactile signage: There *is* Braille/tactile signage. On most signs main floor
+- Braille/tactile signage: There *is* Braille/tactile signage: On most signs main floor
 
 ### Building Features
 
@@ -243,7 +248,7 @@ NA
 
 - Building location (GPS coordinates): -75.19484, 39.95216
 
-- Braille/tactile signage: There *is* Braille/tactile signage. All signs
+- Braille/tactile signage: There *is* Braille/tactile signage: All signs
 
 ### Building Features
 
@@ -259,7 +264,7 @@ NA
 
 - Building location (GPS coordinates): -75.19476, 39.95096
 
-- Braille/tactile signage: There *is* Braille/tactile signage. Signs state room number and department name (when applicable). Restrooms do not have Braille signage.
+- Braille/tactile signage: There *is* Braille/tactile signage: Signs state room number and department name (when applicable). Restrooms do not have Braille signage.
 
 ### Building Features
 
@@ -275,7 +280,7 @@ Bathroom on 5th floor- best one:  Door opening button.  Braille signs.  Wheelcha
 
 - Building location (GPS coordinates): -75.18867, 39.95099
 
-- Braille/tactile signage: There *is* Braille/tactile signage. NA
+- Braille/tactile signage: There *is* Braille/tactile signage: NA
 
 ### Building Features
 
@@ -284,9 +289,3 @@ Bathroom on 5th floor- best one:  Door opening button.  Braille signs.  Wheelcha
 ### Additional information
 
 Floor 1: 4 gender-neutral bathrooms. Floor 2: no public restrooms. Floor 3: inaccessible (stairs at back). Floor 1R: non-accessible front door (no automatic door); ramp to Palestra. Basement: no public restrooms. Floor
-
-
-
-
-
-![This is alt text for an image](https://services3.arcgis.com/9nfxWATFamVUTTGb/ArcGIS/rest/services/service_12179aa8762647dba17ff539184807a7/FeatureServer/0/15/attachments/7)
