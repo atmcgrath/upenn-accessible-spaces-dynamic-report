@@ -31,6 +31,7 @@ https://rawgit.com/publicus/upenn-accessible-spaces-dynamic-report/master/Exampl
 
 ```{r setup, include=FALSE}
 library('dplyr')
+library('glue')
 library('httr')
 library('jsonlite')
 library('knitr')
@@ -44,10 +45,6 @@ knitr::opts_chunk$set(results = 'asis')
 
 ```{r load data}
 dataset <- readr::read_csv("building_inter_4-2-18_FIXED_FIRST_STRING.csv")
-```
-
-```{r include=TRUE}
-cat("Test")
 ```
 
 ## Summary
@@ -65,6 +62,31 @@ say <- function(..., space_separator = '\n\n') {
   cat(space_separator, ..., sep = '', collapse = '')
 }
 
+talk_about_building_information <- function(
+  row_of_data,
+  name_of_information,
+  binary_column_name,
+  details_column_name
+) {
+  say(
+    glue::glue('- {name_of_information}: '),
+    if (
+      is.na(row %>% pull(!!as.name(binary_column_name)))
+    ) {
+      paste('(Unknown)')
+    } else if (
+      row %>% pull(!!as.name(binary_column_name)) == 'yes'
+    ) {
+      paste(
+        glue::glue('There *is* {name_of_information}:'),
+        row %>% pull(!!as.name(details_column_name))
+      )
+    } else {
+      glue::glue('There is *not* signage about {name_of_information} in this building.')
+    }
+  )
+}
+
 for (row_number in 1:nrow(dataset)) {
   row <- dataset %>% slice(row_number)
   
@@ -73,23 +95,19 @@ for (row_number in 1:nrow(dataset)) {
   
   say('- Building location (GPS coordinates): ', row %>% pull(x), ", ", row %>% pull(y))
   
-  say(
-    '- Braille/tactile signage: ',
-    if (
-      is.na(row %>% pull(`Braille/tactile signage?`))
-    ) {
-      paste('(Unknown)')
-    } else if (
-      row %>% pull(`Braille/tactile signage?`) == 'yes'
-    ) {
-      paste(
-        'There *is* Braille/tactile signage:',
-        row %>% pull(`Braille Description`)
-      )
-    } else {
-      paste('There is *not* Braille/tactile signage in this building.')
-    }
-  )
+  row %>% 
+    talk_about_building_information(
+      'Braille/tactile signage',
+      'Braille/tactile signage?',
+      'Braille Description'
+    )
+  
+  row %>% 
+    talk_about_building_information(
+      'Inaccessible spaces',
+      'Inaccessible spaces',
+      'Inaccessible Spaces Description'
+    )
   # TODO:
     # Inaccessible spaces: inaccess
     # If yes, describe these: inaccess_notes
