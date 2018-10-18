@@ -3,17 +3,17 @@ title: 'Building information: Accessible Display'
 author: 'Accessibility Mapping Project'
 date: 'August 28, 2018'
 lang: 'en'
-output: 
+output:
   html_document:
     keep_md: true
     self_contained: false
-params: 
+params:
   output_dir: 'output'
 ---
 
-<!-- This can be viewed, e.g., at 
+<!-- This can be viewed, e.g., at
 https://rawgit.com/publicus/upenn-accessible-spaces-dynamic-report/master/Example.html
--->
+
 
 # TODO
 
@@ -24,7 +24,7 @@ https://rawgit.com/publicus/upenn-accessible-spaces-dynamic-report/master/Exampl
 
 - Using WordPress API to update a post?
   - E.g., `http://web.sas.upenn.edu/access-map/wp-json/wp/v2/pages/` works for *reading* pages Not sure about updating pages yet, though a `PUT` command should work for it.
-
+-->
 
 
 
