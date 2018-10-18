@@ -40,7 +40,7 @@ knitr::opts_chunk$set(results = 'asis')
 ```
 
 ```{r load data}
-dataset <- readr::read_csv("building_inter_4-2-18_FIXED_FIRST_STRING.csv")
+dataset <- readr::read_csv("Building-Interiors-7-4-18_fixed.csv")
 ```
 
 ## Summary
@@ -90,7 +90,7 @@ for (row_number in 1:nrow(dataset)) {
   
   say('- Inaccessible spaces: ', row %>% pull('Inaccessible spaces'), '; ', row %>% pull('Inaccessible Spaces Description'))
   
-  say('- Lighting: ', row %>% pull('How are the hallways lit?'), '; ', row %>% pull('Lighting Description'))
+  say('- Lighting: ', row %>% pull('How are the hallways lit?'), '; ', row %>% pull('Describe the lighting'))
 
   say('- Chemicals or allergens: ', row %>% pull('Chemicals and allergens?'))
   

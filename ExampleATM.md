@@ -1,7 +1,7 @@
 ---
 title: 'Building information: Accessible Display'
 author: 'Accessibility Mapping Project'
-date: 'August 24, 2018'
+date: 'August 28, 2018'
 lang: 'en'
 output: 
   html_document:
@@ -31,7 +31,7 @@ https://rawgit.com/publicus/upenn-accessible-spaces-dynamic-report/master/Exampl
 
 ## Summary
 
-We have compiled data on 15 buildings in this document. Below, you will find information on each building individually.
+We have compiled data on 25 buildings in this document. Below, you will find information on each building individually.
 
 
 
@@ -313,7 +313,7 @@ There is a ramp on the west side of the building to the Kamin entrance.  There a
 
 - Lighting: natural; NA
 
-- Chemicals or allergens: N/A
+- Chemicals or allergens: NA
 
 ### Building Features
 
@@ -604,3 +604,383 @@ Bathroom on 5th floor- best one:  Door opening button.  Braille signs.  Wheelcha
 ### Additional information
 
 Floor 1: 4 gender-neutral bathrooms. Floor 2: no public restrooms. Floor 3: inaccessible (stairs at back). Floor 1R: non-accessible front door (no automatic door); ramp to Palestra. Basement: no public restrooms. Floor
+
+## Building Name: Institute of Contemporary Art
+
+### Building Information
+
+- Building location (GPS coordinates): -75.19478, 39.95406
+
+- Braille or tactile signage: no; NA
+
+- Inaccessible spaces: no; NA
+
+- Lighting: both; Generally always well lit
+
+- Chemicals or allergens: NA
+
+### Building Features
+
+- Floors: 2
+
+- Stairwells: NA
+
+- Elevators: 1
+
+- Accessible bathrooms: NA
+
+- Gender-neutral bathrooms: 3
+
+- Gender-neutral accessible bathrooms: 1
+
+- Total bathrooms: 3
+
+- Lactation spaces?: no
+
+- Prayer or meditation spaces?: yes
+
+### Additional information
+
+NA
+
+## Building Name: McNeill
+
+### Building Information
+
+- Building location (GPS coordinates): -75.19792, 39.95211
+
+- Braille or tactile signage: yes; Only on 2nd floor bathrooms
+
+- Inaccessible spaces: yes; The roof. Telephone closet on 5th floor.
+
+- Lighting: artificial; Fluorescent lights, few windows. Natural lighting in central atrium from 2nd floor up
+
+- Chemicals or allergens: NA
+
+### Building Features
+
+- Floors: 6
+
+- Stairwells: 4
+
+- Elevators: 2
+
+- Accessible bathrooms: 2
+
+- Gender-neutral bathrooms: 0
+
+- Gender-neutral accessible bathrooms: 0
+
+- Total bathrooms: 12
+
+- Lactation spaces?: yes
+
+- Prayer or meditation spaces?: no
+
+### Additional information
+
+Narrow hallways and doors. No accessible bathrooms above 1st floor; lactation space on 2nd floor requires code; on campus recruiting is accessible
+
+## Building Name: Irvine Auditorium
+
+### Building Information
+
+- Building location (GPS coordinates): -75.193, 39.95088
+
+- Braille or tactile signage: NA; NA
+
+- Inaccessible spaces: NA; NA
+
+- Lighting: artificial; NA
+
+- Chemicals or allergens: NA
+
+### Building Features
+
+- Floors: 4
+
+- Stairwells: 2
+
+- Elevators: 2
+
+- Accessible bathrooms: 2
+
+- Gender-neutral bathrooms: 0
+
+- Gender-neutral accessible bathrooms: 0
+
+- Total bathrooms: 6
+
+- Lactation spaces?: no
+
+- Prayer or meditation spaces?: no
+
+### Additional information
+
+no bathrooms on first floor, nonworking standard height pushplate at main entrance, use ankle height. perelman quad entrance not usable. No Braille signage. wheelchair accessible water fountain on B2 and G.
+
+## Building Name: Steinberg Dietrich Hall
+
+### Building Information
+
+- Building location (GPS coordinates): -75.19615, 39.95184
+
+- Braille or tactile signage: yes; Not at wheelchair level
+
+- Inaccessible spaces: NA; NA
+
+- Lighting: both; NA
+
+- Chemicals or allergens: NA
+
+### Building Features
+
+- Floors: NA
+
+- Stairwells: NA
+
+- Elevators: NA
+
+- Accessible bathrooms: 8
+
+- Gender-neutral bathrooms: 2
+
+- Gender-neutral accessible bathrooms: 2
+
+- Total bathrooms: 10
+
+- Lactation spaces?: no
+
+- Prayer or meditation spaces?: no
+
+### Additional information
+
+Tampon machine in women’s restroom which is too high to reach. Ground floor bathrooms have wash basins difficult to reach. Emergency exit on second floor is accessible only by stairs.
+
+## Building Name: Gittis Hall
+
+### Building Information
+
+- Building location (GPS coordinates): -75.19273, 39.9542
+
+- Braille or tactile signage: no; NA
+
+- Inaccessible spaces: no; NA
+
+- Lighting: both; Big windows with plenty of artificial lighting
+
+- Chemicals or allergens: No
+
+### Building Features
+
+- Floors: 2
+
+- Stairwells: 3
+
+- Elevators: 1
+
+- Accessible bathrooms: NA
+
+- Gender-neutral bathrooms: NA
+
+- Gender-neutral accessible bathrooms: NA
+
+- Total bathrooms: NA
+
+- Lactation spaces?: NA
+
+- Prayer or meditation spaces?: NA
+
+### Additional information
+
+NA
+
+## Building Name: Towne Hall
+
+### Building Information
+
+- Building location (GPS coordinates): -75.19092, 39.95182
+
+- Braille or tactile signage: yes; Likely too high for some wheelchair users.
+
+- Inaccessible spaces: yes; South basement double doors without push pad and too narrow (rooms B12-B13, integrated product design studio). Office of diversity and inclusion accessible only by inaccessible double doors, room 125. Computer lab only accessible by freight elevator.
+
+- Lighting: artificial; Flourescent light.
+
+- Chemicals or allergens: Smells of paint and chemicals
+
+### Building Features
+
+- Floors: 5
+
+- Stairwells: 8
+
+- Elevators: 0
+
+- Accessible bathrooms: 5
+
+- Gender-neutral bathrooms: 2
+
+- Gender-neutral accessible bathrooms: 3
+
+- Total bathrooms: 9
+
+- Lactation spaces?: yes
+
+- Prayer or meditation spaces?: no
+
+### Additional information
+
+Gender neutral bathrooms in basement are marked by gender but are single user bathrooms, both have changing tables. No elevators in building but elevators in connected Skirkanich Hall and Levine Hall.
+
+## Building Name: Golkin Hall
+
+### Building Information
+
+- Building location (GPS coordinates): -75.19264, 39.95387
+
+- Braille or tactile signage: yes; Braille on signs
+
+- Inaccessible spaces: NA; NA
+
+- Lighting: both; NA
+
+- Chemicals or allergens: NA
+
+### Building Features
+
+- Floors: NA
+
+- Stairwells: NA
+
+- Elevators: NA
+
+- Accessible bathrooms: NA
+
+- Gender-neutral bathrooms: NA
+
+- Gender-neutral accessible bathrooms: NA
+
+- Total bathrooms: NA
+
+- Lactation spaces?: NA
+
+- Prayer or meditation spaces?: NA
+
+### Additional information
+
+Bathrooms do not have automatic doors
+
+## Building Name: Skirkanich Hall
+
+### Building Information
+
+- Building location (GPS coordinates): -75.19047, 39.95205
+
+- Braille or tactile signage: yes; Sometimes difficult to feel, usually too high for wheelchair users.
+
+- Inaccessible spaces: no; NA
+
+- Lighting: both; Many windows.
+
+- Chemicals or allergens: NA
+
+### Building Features
+
+- Floors: 6
+
+- Stairwells: 3
+
+- Elevators: 2
+
+- Accessible bathrooms: 8
+
+- Gender-neutral bathrooms: 4
+
+- Gender-neutral accessible bathrooms: 4
+
+- Total bathrooms: 10
+
+- Lactation spaces?: no
+
+- Prayer or meditation spaces?: no
+
+### Additional information
+
+North elevator accesses more floors and Moore building. Building connected to Moore, Levine, and Towne halls on 1, 2, 3.
+
+## Building Name: Caster
+
+### Building Information
+
+- Building location (GPS coordinates): -75.19759, 39.95249
+
+- Braille or tactile signage: yes; Very rarely, central common use rooms, not offices.
+
+- Inaccessible spaces: yes; Ground floor is not for the most part
+
+- Lighting: artificial; Old, no natural light, fluorescent, dim
+
+- Chemicals or allergens: Strong chemical smell, smells of old books and plastic
+
+### Building Features
+
+- Floors: 4
+
+- Stairwells: 2
+
+- Elevators: 1
+
+- Accessible bathrooms: 3
+
+- Gender-neutral bathrooms: 4
+
+- Gender-neutral accessible bathrooms: 3
+
+- Total bathrooms: 13
+
+- Lactation spaces?: yes
+
+- Prayer or meditation spaces?: no
+
+### Additional information
+
+Elevator says which floor you’re going. The exit signs don’t point towards exits, very misleading, ground floor has no accessible fire exit, ground floor leads to parking garage of Caster
+
+## Building Name: College Hall
+
+### Building Information
+
+- Building location (GPS coordinates): -75.19374, 39.95148
+
+- Braille or tactile signage: yes; Braille on all signs but often too high for wheelchair users.
+
+- Inaccessible spaces: yes; The entire fourth floor is inaccessible. This is the location of the Philomathean society, and all of the rooms used by this society are inaccessible to wheelchair users. While every other floor is accessible by elevator, the elevator is very narrow.
+
+- Lighting: artificial; The lighting is mostly soft interior lights. The second and third floors are particularly dark. Some rooms have big windows with natural light.
+
+- Chemicals or allergens: Not particularly. Some dust and lots of plants.
+
+### Building Features
+
+- Floors: 4
+
+- Stairwells: 3
+
+- Elevators: 1
+
+- Accessible bathrooms: 6
+
+- Gender-neutral bathrooms: 2
+
+- Gender-neutral accessible bathrooms: 3
+
+- Total bathrooms: 9
+
+- Lactation spaces?: no
+
+- Prayer or meditation spaces?: no
+
+### Additional information
+
+Signage is often too high for wheelchair users. Many of the doors are very heavy. Some bathrooms labelled accessible are not well designed. Particularly the accessible bathroom on the second and third floors have no push button and is poorly designed.
