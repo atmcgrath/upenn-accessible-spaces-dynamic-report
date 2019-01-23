@@ -1,0 +1,143 @@
+---
+title: 'Building information: Accessible Display'
+author: 'Accessibility Mapping Project'
+date: '`r format(Sys.Date(), format="%B %d, %Y")`'
+lang: 'en'
+output: 
+  html_document:
+    keep_md: true
+    self_contained: false
+params: 
+  output_dir: 'output'
+---
+
+<!-- This can be viewed, e.g., at 
+https://rawgit.com/publicus/upenn-accessible-spaces-dynamic-report/master/Example.html
+-->
+
+# TODO
+
+- Finish writing the document
+- Only retaining the raw HTML for the body section of the document
+
+### Stretch goals
+
+- Using WordPress API to update a post?
+  - E.g., `http://web.sas.upenn.edu/access-map/wp-json/wp/v2/pages/` works for *reading* pages Not sure about updating pages yet, though a `PUT` command should work for it.
+
+```{r setup, include=FALSE}
+library('dplyr')
+library('glue')
+library('httr')
+library('jsonlite')
+library('knitr')
+library('readr')
+
+knitr::opts_chunk$set(echo = FALSE)
+knitr::opts_chunk$set(message = FALSE)
+knitr::opts_chunk$set(warning = TRUE)
+knitr::opts_chunk$set(results = 'asis')
+```
+
+```{r load data}
+dataset <- readr::read_csv("Building-int-1-23-19.csv")
+```
+
+## Summary
+
+We have compiled data on `r dataset %>% nrow()` buildings in this document. Below, you will find information on each building individually.
+
+
+```{r loop through buildings}
+say <- function(..., space_separator = '\n\n') {
+  cat(space_separator, ..., sep = '', collapse = '')
+}
+
+talk_about_building_information <- function(
+  row_of_data,
+  name_of_information,
+  binary_column_name,
+  details_column_name
+) {
+  say(
+    glue::glue('- {name_of_information}: '),
+    if (
+      is.na(row %>% pull(!!as.name(binary_column_name)))
+    ) {
+      paste('(Unknown)')
+    } else if (
+      row %>% pull(!!as.name(binary_column_name)) == 'yes'
+    ) {
+      paste(
+        glue::glue('There *is* {name_of_information}:'),
+        row %>% pull(!!as.name(details_column_name))
+      )
+    } else {
+      glue::glue('There is *not* signage about {name_of_information} in this building.')
+    }
+  )
+}
+
+for (row_number in 1:nrow(dataset)) {
+  row <- dataset %>% slice(row_number)
+  
+  say('## Building Name: ', row %>% pull(`Building name`))
+  say('### Building Information')
+  
+  say('- Building location (GPS coordinates): ', row %>% pull(x), ", ", row %>% pull(y))
+  
+  say('- Braille or tactile signage: ', row %>% pull('Braille signage'), '; ', row %>% pull('Braille notes'))
+  
+  say('- Inaccessible spaces: ', row %>% pull('Inaccessible?'), '; ', row %>% pull('Inaccessibility notes'))
+  
+  say('- Lighting: ', row %>% pull('Building interior lighting type'), '; ', row %>% pull('Lighting notes'))
+
+  say('- Chemicals or allergens: ', row %>% pull('Presence of chemicals/odors/ allergens'), '; ', row %>% pull('Chemicals/ odors/ allergens notes'))
+  
+  
+  say('### Building Features')
+  
+  say(
+    '- Floors: ', row %>% pull('Number of floors'))
+  
+  say(
+    '- Stairwells: ', row %>% pull('Number of stairwells'))  
+
+  say(
+    '- Elevators: ', row %>% pull('Number of elevators'))
+
+  say(
+    '- Accessible bathrooms: ', row %>% pull('Number of accessible bathrooms'))
+
+  say(
+    '- Gender-neutral bathrooms: ', row %>% pull('Number of gender neutral bathrooms'))
+
+  say(
+    '- Gender-neutral accessible bathrooms: ', row %>% pull('Number of gender neutral accessible bathrooms'))
+
+  say(
+    '- Total bathrooms: ', row %>% pull('Total number of bathrooms'))
+
+  say(
+    '- Lactation spaces?: ', row %>% pull('Presence of Lactation Spaces'))
+
+  say(
+    '- Prayer or meditation spaces?: ', row %>% pull('Presence of Prayer Spaces'))
+
+  say(
+    '- Accessible drinking fountains?: ', row %>% pull('Accessible drinking fountains'))
+
+  say(
+    '- Seating or resting places in public areas?: ', row %>% pull('Seating/resting places in the main areas')
+  ) 
+
+  
+  say('### Additional information')
+  
+  say(
+    '- Accessibility information url: ', row %>% pull('Accessibility information links')
+  )
+  
+  say('-Notes: ', row %>% pull('Additional Notes'))
+}  # End of for loop
+```
